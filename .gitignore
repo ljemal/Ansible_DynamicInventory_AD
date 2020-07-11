@@ -1,0 +1,7 @@
+# Ignore all files #
+*
+# Exception for ignore #
+!.gitignore
+!ldap*
+!requirements.txt
+!Readme.md
