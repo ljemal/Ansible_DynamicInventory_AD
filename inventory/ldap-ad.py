@@ -31,7 +31,7 @@ class ADAnsibleInventory():
 
     def __init__(self):
         directory = os.path.dirname(os.path.abspath(__file__))
-        configfile = directory + '/test.ini'
+        configfile = directory + '/ldap-ad.simple.ini'
         config = configparser.ConfigParser()
         config.read(configfile)
         username = os.environ['LDAPUN']
