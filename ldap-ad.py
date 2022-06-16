@@ -45,10 +45,11 @@ class ADAnsibleInventory():
         groups = config.get('filters','groups').split(",")
         hostvars = config.get('filters','hostvars').split(",")
 
-        adfilter = "(&(sAMAccountType=805306369))" # filters the query from AD based on account type: computer
+        adfilter = "(&(objectCategory=Computer))" # filters the query from AD based on account type: computer
+        # adfilter = "(&(&(sAMAccountType=805306369)))"
         self.inventory = {"_meta": {"hostvars": {}}}
         # self.ad_connect_tls(ldapuri, username, password, port, ca_file)
-        self.ad_connect(ldapuri, username, password, port)
+        self.ad_connect(ldapuri, username, password, int(port))
         self.get_hosts(basedn, adfilter, adattributes) # Retrieves the server hosts based on the AD filter
         self.org_hosts(basedn) # organises the hosts
         self.group_hosts(groups, hostvars)
@@ -64,7 +65,6 @@ class ADAnsibleInventory():
                 print(self.inventory['_meta']['hostvars'][args.host]) # prints the hosts into inventory
             except Exception:
                 print('{}')
-        
 
     # function to initiate TLS connection
     def ad_connect_tls(self, ldapuri, username, password, port, ca_file ): # connection uses ca file -> is it mandatory
