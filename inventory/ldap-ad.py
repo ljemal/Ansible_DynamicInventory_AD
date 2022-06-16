@@ -34,7 +34,7 @@ class ADAnsibleInventory():
         configfile = directory + '/test.ini'
         config = configparser.ConfigParser()
         config.read(configfile)
-         username = os.environ['LDAPUN']
+        username = os.environ['LDAPUN']
         password = os.environ['LDAPPASS']
         basedn = config.get('ldap-ad', 'basedn')
         ldapuri = os.environ['LDAPURL']
