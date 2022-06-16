@@ -34,10 +34,10 @@ class ADAnsibleInventory():
         configfile = directory + '/test.ini'
         config = configparser.ConfigParser()
         config.read(configfile)
-        username = config.get('ldap-ad', 'username')
-        password = config.get('ldap-ad', 'password')
+         username = os.environ['LDAPUN']
+        password = os.environ['LDAPPASS']
         basedn = config.get('ldap-ad', 'basedn')
-        ldapuri = config.get('ldap-ad', 'ldapuri')
+        ldapuri = os.environ['LDAPURL']
         port = config.get('ldap-ad', 'port')
         adattributes = config.get('ldap-ad','attributes').split(",") # get attributes from config file and split by , to put into a list
         filegroup = config.get('ldap-ad','filegroup').split(",") # groups to print out hosts from inventory to file
