@@ -1,5 +1,5 @@
 # Ignore all files #
-*
+
 # Exception for ignore #
 !.gitignore
 !ldap*
